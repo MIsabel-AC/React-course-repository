@@ -34,7 +34,7 @@ const App = () => {
     setBad(bad + 1);
   };
   
-
+if (good + neutral + bad != 0) {
   return (
     <div>
       <h1>give feedback</h1>
@@ -45,6 +45,18 @@ const App = () => {
         <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
   )
+}else{
+  return (
+      <div>
+        <h1>give feedback</h1>
+        <button onClick={goodCount}>good</button>
+        <button onClick={neutralCount}>neutral</button>
+        <button onClick={badCount}>bad</button>
+        <h1>statistics</h1>
+        <p>No feedback given</p>
+      </div>
+    )
+}
 }
 
 export default App
