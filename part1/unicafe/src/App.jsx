@@ -1,5 +1,13 @@
 import { useState } from 'react'
 
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>{text}</button>
+)
+
+const StatisticLine = ({ text, value }) => (
+  <p>{text} {value}</p>
+)
+
 const Statistics = ({ good, neutral, bad }) => {
   const total = good + neutral + bad
   const average = total && (good - bad) / total
@@ -7,12 +15,12 @@ const Statistics = ({ good, neutral, bad }) => {
 
   return (
     <div>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {total}</p>
-      <p>average {average}</p>
-      <p>positive {positive} %</p>
+      <StatisticLine text="good" value={good} />
+      <StatisticLine text="neutral" value={neutral} />
+      <StatisticLine text="bad" value={bad} />
+      <StatisticLine text="all" value={total} />
+      <StatisticLine text="average" value={average} />
+      <StatisticLine text="positive" value={positive + '%'} /> 
     </div>
   )
 }
@@ -38,9 +46,9 @@ if (good + neutral + bad != 0) {
   return (
     <div>
       <h1>give feedback</h1>
-        <button onClick={goodCount}>good</button>
-        <button onClick={neutralCount}>neutral</button>
-        <button onClick={badCount}>bad</button>
+        <Button handleClick={goodCount} text="good"></Button>
+        <Button handleClick={neutralCount} text="neutral"></Button>
+        <Button handleClick={badCount} text="bad"></Button>
       <h1>statistics</h1>
         <Statistics good={good} neutral={neutral} bad={bad}/>
     </div>
@@ -49,9 +57,9 @@ if (good + neutral + bad != 0) {
   return (
       <div>
         <h1>give feedback</h1>
-        <button onClick={goodCount}>good</button>
-        <button onClick={neutralCount}>neutral</button>
-        <button onClick={badCount}>bad</button>
+          <Button handleClick={goodCount} text="good"></Button>
+          <Button handleClick={neutralCount} text="neutral"></Button>
+          <Button handleClick={badCount} text="bad"></Button>
         <h1>statistics</h1>
         <p>No feedback given</p>
       </div>
